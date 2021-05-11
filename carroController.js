@@ -1,5 +1,6 @@
 const carroschema = require('./carroschema')
 import Aluno from "./AlunoModel"
+import Turma from "./TurmaModel"
 
 class carroController {
     async store(req,res){
@@ -14,9 +15,31 @@ class carroController {
       return res.json({"mensagem": "Não funcionou!"+error})
     })
   };
+  async turma(req, res){
+    const turmas = await Turma.findAll({
+      where: {},
+      attributes: ['IDTURMA', 'NOMETURMA'],
+      include: [
+        {
+          model: Aluno,
+          as: 'aluno',
+          attributes: ['IDALUNO', 'NOME'],
+        }
+      ]
+      });
+
+      
+    
+
+    console.log(turmas)
+    return res.json(turmas)
+  }
   async index(req, res){
-    const cesar = await Aluno.findAll()
-    res.json(cesar)
+    const alunos = await Aluno.findAll()
+    console.log(alunos)
+    return res.json(alunos)
+
+
     carroschema.find({})
     .then((result)=>{
       console.log(result)

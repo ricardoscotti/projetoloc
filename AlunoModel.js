@@ -6,8 +6,13 @@ class Aluno extends Model{
         super.init({"IDALUNO": {type:Sequelize.SMALLINT, primarykey: true}, "NOME": Sequelize.STRING},{sequelize, freezeTableName: true, tableName: 'ALUNO', timestamps: false})
         this.removeAttribute("id")
         
-             return this
-            }
+            return this
+        }
+
+        // static associate(model){
+        //     console.log(model)
+        //     this.belongsTo(model.Turma, {foreignKey: "IDALUNO", as: "teste"})  
+        // }
 }
 
 export default Aluno;

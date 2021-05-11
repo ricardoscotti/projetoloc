@@ -1,7 +1,7 @@
 {
-  "name": "26-01-2021",
+  "name": "TestePostgres",
   "version": "1.0.0",
-  "description": "",
+  "description": "Teste postgres para os alunos da 2 fase",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js"
