@@ -4,16 +4,16 @@ class Banda extends Model{
     
     static init(sequelize) {
         super.init({
-            "IDBANDA": {
+            "idbanda": {
                 type:Sequelize.SMALLINT, 
                 primarykey: true
             }, 
-            "NOME_BANDA": Sequelize.STRING
+            "nome_banda": Sequelize.STRING
         },{
             sequelize, 
             underscored: false, 
             freezeTableName: true, 
-            tableName: 'ESTABELECIMENTO', 
+            tableName: 'banda', 
             timestamps: false
         })
         this.removeAttribute("id")
@@ -21,9 +21,13 @@ class Banda extends Model{
         return this
     }
 
-    static associate(model){
-        this.hasMany(model.Evento);
-    }
+    // static associate(model){
+    //     this.hasMany(model.Evento, {
+    //         constraint: false,
+    //         foreignKey: 'idBanda',
+    //         targetKey:'idBanda'
+    //     });
+    // }
 }
 
 export default Banda;

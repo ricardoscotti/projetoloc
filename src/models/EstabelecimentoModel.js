@@ -4,16 +4,16 @@ class Estabelecimento extends Model{
     
     static init(sequelize) {
         super.init({
-            "IDESTABELECIMENTO": {
+            "idestabelecimento": {
                 type:Sequelize.SMALLINT, 
                 primarykey: true
             }, 
-            "RAZAO_SOCIAL": Sequelize.STRING
+            "razao_social": Sequelize.STRING
         },{
             sequelize, 
             underscored: false, 
             freezeTableName: true, 
-            tableName: 'ESTABELECIMENTO', 
+            tableName: 'estabelecimento', 
             timestamps: false
         })
         this.removeAttribute("id")
@@ -21,9 +21,9 @@ class Estabelecimento extends Model{
         return this
     }
     
-    static associate(model){
-        this.hasMany(model.Evento);
-    }
+    // static associate(model){
+    //     this.hasMany(model.Evento);
+    // }
 
 }
 

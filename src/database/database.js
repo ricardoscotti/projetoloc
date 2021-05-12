@@ -1,8 +1,10 @@
-import sequelize from "sequelize";
-import Turma from "./TurmaModel"
-import Aluno from "./AlunoModel"
+import Sequelize from "sequelize";
+import Evento from '../models/EventoModel';
+import Banda from '../models/BandaModel';
+import Estabelecimento from '../models/EstabelecimentoModel';
 
-const models = [Aluno, Turma]
+
+const models = [Evento, Banda, Estabelecimento]
 
 class DataBase {
     constructor(){
@@ -10,7 +12,7 @@ class DataBase {
     }
 
     mySQL(){
-        this.connection = new sequelize({"dialect": "postgres", "host": "localhost", "username": "postgres", "password": "postgres", "database": "CURSO_SENAI", define: { timestamp: false, underscored: false, underscoredAll: false}})
+        this.connection = new Sequelize({"dialect": "postgres", "host": "localhost", "port": '5433', "username": "postgres", "password": "Naotenho1senha", 'database':'dbLetItMusic', define: { timestamp: false, underscored: false, underscoredAll: false}})
 
         models.map(model => model.init(this.connection)).map(model => model.associate && model.associate(this.connection.models))
     }

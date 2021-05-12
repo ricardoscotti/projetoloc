@@ -28,7 +28,20 @@ class EventoController {
 
   async index(req, res){
     try{
-      const eventos = await Evento.findAll();
+      const eventos = await Evento.findAll({
+        include: [
+          {
+            model: Banda,
+            as: "bandaEvento",
+            attributes: ["nome_banda"]         
+          },
+          {
+            model: Estabelecimento,
+            as: "estabelecimentoEvento",
+            attributes: ["razao_social"] 
+          }
+        ]
+      });
       console.log(eventos)
       return res.json(eventos)
     }catch(error){
@@ -45,4 +58,4 @@ class EventoController {
   }
 }
 
-module.exports = new carroController();
+export default new EventoController();

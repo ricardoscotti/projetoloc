@@ -4,37 +4,36 @@ class Evento extends Model{
     
     static init(sequelize) {
         super.init({
-            "IDEVENTO": {
+            "idevento": {
                 type:Sequelize.SMALLINT, 
                 primarykey: true
             }, 
-            "VALOR_EVENTO": 
+            "valor_evento": 
             Sequelize.STRING
         },{
             sequelize, 
             underscored: false, 
             freezeTableName: true, 
-            tableName: 'EVENTO', 
+            tableName: 'evento', 
             timestamps: false})
         this.removeAttribute("id")
         
         return this
     }
     static associate(model){
-        this.belongsTo(model.Estabalecimento, {
+        console.log(model)
+        this.belongsTo(model.Estabelecimento, {
             constraint: false, 
-            foreignKey: "IDESTABELECIMENTO", 
-            targetKey: "IDESTABELECIMENTO", 
+            foreignKey: "idestabelecimento", 
+            targetKey: "idestabelecimento", 
             as:"estabelecimentoEvento"});
         this.belongsTo(model.Banda, {
             constraint: false, 
-            foreignKey: "IDBANDA", 
-            targetKey: "IDBANDA", 
-            as:"bandaEvento"}); 
-        
+            foreignKey: "idbanda", 
+            targetKey: "idbanda", 
+            as:"bandaEvento"});    
     }
  
-
 }
 
 export default Evento;
